@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int jahr;
+    int tag;
+    int monat;
+    int schaltjahr;
+    string sSchaltjahr;
+
+    int tagArray[12]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // input variablen
+    cout << "tag" << endl;
+    cin >> tag;
+
+    cout << "monat" << endl;
+    cin >> monat;
+
+    cout << "jahr" << endl;
+    cin >> jahr;
+
+    if( jahr%4 == 0 && jahr %100 != 0 || jahr%400 ==0){
+        sSchaltjahr = "(Schaltjahr)";
+        schaltjahr = 1;
+        tagArray[1] = 29;
+    } else{
+        sSchaltjahr = "";
+        schaltjahr = 0;
+    }
+
+    if(jahr >= 0 && monat >= 1 && monat <= 12){
+        if(tag <= tagArray[monat-1]){
+            cout << tag << " " << monat << " " << jahr << " " << "ist ein Korrektes Datum" << sSchaltjahr << endl;
+        } else {
+            cout << tag << " " << monat << " " << jahr << " " << "ist kein Korrektes Datum" << endl;
+        }
+    } else {
+        cout << tag << " " << monat << " " << jahr << " " << "ist kein Korrektes Datum" << endl;
+    }
+
+
+    return 0;
+}
